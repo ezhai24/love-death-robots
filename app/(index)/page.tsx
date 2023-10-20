@@ -1,13 +1,18 @@
 "use client";
 
-import { Box, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
+
+import Scene from "./Scene";
 
 export default function Home() {
   return (
-    <Canvas className="h-screen">
-      <Box />
-      <OrbitControls />
+    <Canvas
+      className="h-screen"
+      camera={{ fov: 10, position: [0, 2.7, 5], rotation: [0, 0, 0] }}
+    >
+      <directionalLight position={[1, 10, 10]} />
+
+      <Scene />
     </Canvas>
   );
 }

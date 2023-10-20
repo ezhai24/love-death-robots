@@ -7,7 +7,7 @@ Title: XBOT 4000
 */
 
 import * as THREE from "three";
-import React from "react";
+import { ForwardedRef, forwardRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 
@@ -20,14 +20,17 @@ type GLTFResult = GLTF & {
   };
 };
 
-const Xbot = (props: JSX.IntrinsicElements["group"]) => {
+const Xbot = (
+  props: JSX.IntrinsicElements["group"],
+  ref: ForwardedRef<THREE.Group>,
+) => {
   const { nodes, materials } = useGLTF("/assets/xbot_4000.glb") as GLTFResult;
 
   nodes.ROBOT_LOWPOLY_lambert2_0.geometry.center();
   nodes.ROBOT_LOWPOLY_lambert2_0.geometry.translate(0, 30.5, 0);
 
   return (
-    <group {...props} dispose={null}>
+    <group {...props} ref={ref} dispose={null}>
       <mesh
         castShadow
         receiveShadow
@@ -40,4 +43,4 @@ const Xbot = (props: JSX.IntrinsicElements["group"]) => {
 
 useGLTF.preload("/assets/xbot_4000.glb");
 
-export default Xbot;
+export default forwardRef(Xbot);

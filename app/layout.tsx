@@ -10,7 +10,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="h-screen">
-      <body className="h-screen">
+      <body className="h-screen overflow-hidden">
         <nav className="absolute z-10 flex w-full justify-between px-[5%] pt-5">
           <a
             href={externalRoutes.netflix}

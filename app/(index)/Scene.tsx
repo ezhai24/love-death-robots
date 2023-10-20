@@ -6,6 +6,8 @@ import { useRef } from "react";
 import { Scroll, useScroll, Svg, Text, Html } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
+import { externalRoutes } from "../routes";
+
 import Xbot from "./Xbot";
 
 const Scene = () => {
@@ -151,7 +153,7 @@ const Scene = () => {
         </Text>
         <Html transform scale={0.15} position={[0.29, -0.65, 0]}>
           <motion.a
-            href="https://www.netflix.com/title/80174608"
+            href={externalRoutes.netflixLDRTitle}
             whileHover={{
               backgroundColor: "var(--color-botred)",
               color: "#fff",

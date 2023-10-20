@@ -1,0 +1,13 @@
+diff --git a/node_modules/@react-three/drei/web/Html.js b/node_modules/@react-three/drei/web/Html.js
+index 901c62a..d2f0fc0 100644
+--- a/node_modules/@react-three/drei/web/Html.js
++++ b/node_modules/@react-three/drei/web/Html.js
+@@ -118,7 +118,7 @@ const Html = /* @__PURE__ */React.forwardRef(({
+   const transformOuterRef = React.useRef(null);
+   const transformInnerRef = React.useRef(null);
+   // Append to the connected element, which makes HTML work with views
+-  const target = (portal == null ? void 0 : portal.current) || events.connected || gl.domElement.parentNode;
++  const target = (portal == null ? void 0 : portal.current) || gl.domElement.parentNode;
+   const occlusionMeshRef = React.useRef(null);
+   const isMeshSizeSet = React.useRef(false);
+   const isRayCastOcclusion = React.useMemo(() => {

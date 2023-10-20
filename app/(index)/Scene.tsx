@@ -151,7 +151,12 @@ const Scene = () => {
         >
           Netflix
         </Text>
-        <Html transform scale={0.15} position={[0.29, -0.65, 0]}>
+        <Html
+          transform
+          zIndexRange={[9, 0]}
+          scale={0.15}
+          position={[0.29, -0.65, 0]}
+        >
           <motion.a
             href={externalRoutes.netflixLDRTitle}
             whileHover={{

@@ -6,7 +6,7 @@ import { Text } from "@react-three/drei";
 
 import { getViewportHeightAtDepth } from "@/app/utils";
 
-import { CAMERA_SETTINGS } from "./page";
+import { CAMERA_SETTINGS } from "./Canvas";
 import { SCENE_MARGIN_X_TO_VIEWPORT_RATIO } from "./ScrollableScene";
 
 const DirectorSection = () => {

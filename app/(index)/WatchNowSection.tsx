@@ -9,7 +9,7 @@ import { useFrame } from "@react-three/fiber";
 import { externalRoutes } from "@/app/routes";
 import { getViewportHeightAtDepth } from "@/app/utils";
 
-import { CAMERA_SETTINGS } from "./page";
+import { CAMERA_SETTINGS } from "./Canvas";
 import { SCENE_MARGIN_X_TO_VIEWPORT_RATIO } from "./ScrollableScene";
 
 const WatchNowSection = () => {

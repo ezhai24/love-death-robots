@@ -7,7 +7,7 @@ import Scene from "./Scene";
 
 export const SCENE_MARGIN_TOP = 0.4;
 export const SCENE_MARGIN_BOTTOM = 1.25;
-export const SCENE_MARGIN_X_TO_VIEWPORT_RATIO = 0.05;
+export const SCENE_MARGIN_X_TO_VIEWPORT_RATIO = 0.1;
 
 export const ScrollableScene = () => {
   const { viewport } = useThree();

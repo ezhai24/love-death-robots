@@ -20,7 +20,7 @@ export const ScrollableScene = () => {
   const onCalculateXbotHeight = (height: number) => setXbotHeight(height);
 
   return (
-    <ScrollControls pages={numPages}>
+    <ScrollControls pages={numPages} damping={2}>
       <Scene onCalculateXbotHeight={onCalculateXbotHeight} />
       <ScrollProgress />
     </ScrollControls>

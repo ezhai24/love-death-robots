@@ -8,7 +8,7 @@ Title: XBOT 4000
 
 import * as THREE from "three";
 
-import { ForwardedRef, forwardRef } from "react";
+import { ForwardedRef, forwardRef, useEffect } from "react";
 import { GLTF } from "three-stdlib";
 
 import { useGLTF } from "@react-three/drei";
@@ -27,12 +27,13 @@ type GLTFResult = GLTF & {
 
 interface Props {
   scale?: [x: number, y: number, z: number] | number;
+  onCalculateXbotHeight?: (height: number) => void;
 }
 const Xbot = (
   props: JSX.IntrinsicElements["group"] & Props,
   ref: ForwardedRef<THREE.Group>,
 ) => {
-  const { scale } = props;
+  const { scale, onCalculateXbotHeight } = props;
 
   const { nodes, materials } = useGLTF("/assets/xbot_4000.glb") as GLTFResult;
   const { viewport } = useThree();
@@ -47,6 +48,12 @@ const Xbot = (
   const xbotHeight =
     (xbotGeom.boundingBox!.max!.y - xbotGeom.boundingBox!.min!.y) *
     yScalingFactor;
+
+  useEffect(() => {
+    if (onCalculateXbotHeight) {
+      onCalculateXbotHeight(xbotHeight);
+    }
+  });
 
   const xbotY = 0 - xbotHeight / 2 + viewport.height / 2 - SCENE_MARGIN_TOP;
 

@@ -10,7 +10,12 @@ import { externalRoutes } from "../routes";
 
 import Xbot from "./Xbot";
 
-const Scene = () => {
+interface Props {
+  onCalculateXbotHeight?: (height: number) => void;
+}
+const Scene = (props: Props) => {
+  const { onCalculateXbotHeight } = props;
+
   const xbotRef = useRef<THREE.Group | null>(null);
 
   const directorTextRef = useRef<THREE.Group | null>(null);
@@ -45,7 +50,11 @@ const Scene = () => {
 
   return (
     <Scroll>
-      <Xbot ref={xbotRef} scale={0.25} />
+      <Xbot
+        ref={xbotRef}
+        scale={0.25}
+        onCalculateXbotHeight={onCalculateXbotHeight}
+      />
 
       <Svg
         position={[-4.91, 16, -3]}

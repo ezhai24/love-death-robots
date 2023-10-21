@@ -3,7 +3,7 @@ import * as THREE from "three";
 import { motion } from "framer-motion";
 import { useRef } from "react";
 
-import { Scroll, useScroll, Svg, Text, Html } from "@react-three/drei";
+import { Scroll, useScroll, Svg, Text, Html, Center } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
 import { externalRoutes } from "../routes";
@@ -56,11 +56,13 @@ const Scene = (props: Props) => {
         onCalculateXbotHeight={onCalculateXbotHeight}
       />
 
-      <Svg
-        position={[-4.91, 16, -3]}
-        src="/assets/ldrTitleLogo.svg"
-        scale={0.132}
-      />
+      <Center position={[0, 0.5, -3]}>
+        <Svg
+          position={[0, 0, 0]}
+          src="/assets/ldrTitleLogo.svg"
+          scale={0.132}
+        />
+      </Center>
 
       <group ref={directorTextRef} position={[-4.5, 7.2, -3]}>
         <Text

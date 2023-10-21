@@ -17,7 +17,7 @@ const DirectorSection = () => {
   const viewportHeight = getViewportHeightAtDepth(sectionZ, CAMERA_SETTINGS);
   const viewportWidth =
     viewportHeight * (window.innerWidth / window.innerHeight);
-  const marginX = viewportWidth * SCENE_MARGIN_X_TO_VIEWPORT_RATIO;
+  const marginX = viewportWidth * (SCENE_MARGIN_X_TO_VIEWPORT_RATIO + 0.1);
 
   const sectionX = 0 - viewportWidth / 2 + marginX;
   const sectionY = -viewportHeight / 2 - viewportHeight * 0.25;

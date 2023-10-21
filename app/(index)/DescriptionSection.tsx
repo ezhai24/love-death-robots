@@ -19,7 +19,7 @@ const DescriptionSection = () => {
   const viewportHeight = getViewportHeightAtDepth(sectionZ, CAMERA_SETTINGS);
   const viewportWidth =
     viewportHeight * (window.innerWidth / window.innerHeight);
-  const marginX = viewportWidth * SCENE_MARGIN_X_TO_VIEWPORT_RATIO;
+  const marginX = viewportWidth * (SCENE_MARGIN_X_TO_VIEWPORT_RATIO + 0.1);
 
   const sectionX = 0 + viewportWidth / 2 - marginX;
   const sectionY = -viewportHeight / 2 - viewportHeight * 2.35;
@@ -56,7 +56,7 @@ const DescriptionSection = () => {
         font="/fonts/Bebas-Regular.ttf"
         fontSize={0.37}
       >
-        Television
+        Stories
       </Text>
       <Text
         position={[0, -0.35, 0]}
@@ -67,9 +67,9 @@ const DescriptionSection = () => {
         lineHeight={1.2}
         letterSpacing={0.05}
       >
-        Terrifying creatures, wicked surprised and {`\n`}
-        dark comedy converge in this NSFW anthology {`\n`}
-        of animated stories.
+        Terrifying creatures, wicked surprised {`\n`}
+        and dark comedy converge in this NSFW {`\n`}
+        anthology of animated stories.
       </Text>
     </Center>
   );

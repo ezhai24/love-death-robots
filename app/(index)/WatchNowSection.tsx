@@ -6,11 +6,24 @@ import { useRef } from "react";
 import { Text, useScroll, Html } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
-import { externalRoutes } from "../routes";
+import { externalRoutes } from "@/app/routes";
+import { getViewportHeightAtDepth } from "@/app/utils";
+
+import { CAMERA_SETTINGS } from "./page";
+import { SCENE_MARGIN_X_TO_VIEWPORT_RATIO } from "./ScrollableScene";
 
 const WatchNowSection = () => {
   const scroll = useScroll();
   const watchTextRef = useRef<THREE.Group | null>(null);
+
+  const sectionZ = 2;
+
+  const viewportHeight = getViewportHeightAtDepth(sectionZ, CAMERA_SETTINGS);
+  const viewportWidth =
+    viewportHeight * (window.innerWidth / window.innerHeight);
+  const marginX = viewportWidth * SCENE_MARGIN_X_TO_VIEWPORT_RATIO;
+
+  const sectionX = 0 - viewportWidth / 2 + marginX;
 
   useFrame(() => {
     if (watchTextRef.current) {
@@ -20,7 +33,7 @@ const WatchNowSection = () => {
   });
 
   return (
-    <group ref={watchTextRef} position={[-1.7, 0, 2]}>
+    <group ref={watchTextRef} position={[sectionX, 0, sectionZ]}>
       <Text
         position={[0, 0.23, 0]}
         anchorX="left"

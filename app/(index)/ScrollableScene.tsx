@@ -4,6 +4,7 @@ import { ScrollControls } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 
 import Scene from "./Scene";
+import ScrollProgress from "./ScrollProgress";
 
 export const SCENE_MARGIN_TOP = 0.4;
 export const SCENE_MARGIN_BOTTOM = 1.25;
@@ -21,6 +22,7 @@ export const ScrollableScene = () => {
   return (
     <ScrollControls pages={numPages}>
       <Scene onCalculateXbotHeight={onCalculateXbotHeight} />
+      <ScrollProgress />
     </ScrollControls>
   );
 };

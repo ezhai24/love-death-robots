@@ -7,9 +7,14 @@ Title: XBOT 4000
 */
 
 import * as THREE from "three";
+
 import { ForwardedRef, forwardRef } from "react";
-import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
+
+import { useGLTF } from "@react-three/drei";
+import { useThree } from "@react-three/fiber";
+
+import { SCENE_MARGIN_TOP } from "./ScrollableScene";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -20,17 +25,33 @@ type GLTFResult = GLTF & {
   };
 };
 
+interface Props {
+  scale?: [x: number, y: number, z: number] | number;
+}
 const Xbot = (
-  props: JSX.IntrinsicElements["group"],
+  props: JSX.IntrinsicElements["group"] & Props,
   ref: ForwardedRef<THREE.Group>,
 ) => {
-  const { nodes, materials } = useGLTF("/assets/xbot_4000.glb") as GLTFResult;
+  const { scale } = props;
 
-  nodes.ROBOT_LOWPOLY_lambert2_0.geometry.center();
-  nodes.ROBOT_LOWPOLY_lambert2_0.geometry.translate(0, 30.5, 0);
+  const { nodes, materials } = useGLTF("/assets/xbot_4000.glb") as GLTFResult;
+  const { viewport } = useThree();
+
+  const xbotGeom = nodes.ROBOT_LOWPOLY_lambert2_0.geometry;
+
+  xbotGeom.center();
+  xbotGeom.computeBoundingBox();
+
+  const scaleY = Array.isArray(scale) ? scale[1] : scale;
+  const yScalingFactor = scaleY ?? 1;
+  const xbotHeight =
+    (xbotGeom.boundingBox!.max!.y - xbotGeom.boundingBox!.min!.y) *
+    yScalingFactor;
+
+  const xbotY = 0 - xbotHeight / 2 + viewport.height / 2 - SCENE_MARGIN_TOP;
 
   return (
-    <group {...props} ref={ref} dispose={null}>
+    <group {...props} ref={ref} dispose={null} position={[0, xbotY, 0]}>
       <mesh
         castShadow
         receiveShadow

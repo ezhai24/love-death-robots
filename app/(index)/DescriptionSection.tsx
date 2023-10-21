@@ -12,7 +12,7 @@ import { SCENE_MARGIN_X_TO_VIEWPORT_RATIO } from "./ScrollableScene";
 
 const DescriptionSection = () => {
   const scroll = useScroll();
-  const descTextRef = useRef<THREE.Group | null>(null);
+  const descSectionRef = useRef<THREE.Group | null>(null);
 
   const sectionZ = 2;
 
@@ -22,17 +22,18 @@ const DescriptionSection = () => {
   const marginX = viewportWidth * SCENE_MARGIN_X_TO_VIEWPORT_RATIO;
 
   const sectionX = 0 + viewportWidth / 2 - marginX;
+  const sectionY = -viewportHeight / 2 - viewportHeight * 2.35;
 
   useFrame(() => {
-    if (descTextRef.current) {
-      const translationOffset = scroll.range(38 / 100, 56 / 100);
-      descTextRef.current.position.y = 6.8 - 3.2 * translationOffset;
+    if (descSectionRef.current) {
+      const dampFactor = 4 * scroll.range(1 / 2, 4 / 5);
+      descSectionRef.current.position.y = sectionY - dampFactor;
     }
   });
 
   return (
     <Center
-      ref={descTextRef}
+      ref={descSectionRef}
       position={[sectionX, 0, sectionZ]}
       precise={false}
       left

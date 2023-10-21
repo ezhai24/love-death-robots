@@ -14,7 +14,7 @@ import { SCENE_MARGIN_X_TO_VIEWPORT_RATIO } from "./ScrollableScene";
 
 const WatchNowSection = () => {
   const scroll = useScroll();
-  const watchTextRef = useRef<THREE.Group | null>(null);
+  const watchSectionRef = useRef<THREE.Group | null>(null);
 
   const sectionZ = 2;
 
@@ -24,16 +24,17 @@ const WatchNowSection = () => {
   const marginX = viewportWidth * SCENE_MARGIN_X_TO_VIEWPORT_RATIO;
 
   const sectionX = 0 - viewportWidth / 2 + marginX;
+  const sectionY = -viewportHeight / 2 - viewportHeight * 3.25;
 
   useFrame(() => {
-    if (watchTextRef.current) {
-      const translationOffset = scroll.range(60 / 100, 40 / 100);
-      watchTextRef.current.position.y = 4.2 - 2.6 * translationOffset;
+    if (watchSectionRef.current) {
+      const dampFactor = 4 * scroll.range(2 / 3, 1);
+      watchSectionRef.current.position.y = sectionY - dampFactor;
     }
   });
 
   return (
-    <group ref={watchTextRef} position={[sectionX, 0, sectionZ]}>
+    <group ref={watchSectionRef} position={[sectionX, 0, sectionZ]}>
       <Text
         position={[0, 0.23, 0]}
         anchorX="left"

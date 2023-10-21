@@ -1,9 +1,9 @@
 "use client";
 
-import { Environment, ScrollControls } from "@react-three/drei";
+import { Environment } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 
-import Scene from "./Scene";
+import { ScrollableScene } from "./ScrollableScene";
 import TrailerModal from "./TrailerModal";
 
 export default function Home() {
@@ -16,9 +16,7 @@ export default function Home() {
         <Environment files="/assets/abandoned-city.hdr" background blur={0.1} />
         <directionalLight intensity={1.5} position={[4, 0, 5]} />
 
-        <ScrollControls pages={1.93} damping={2}>
-          <Scene />
-        </ScrollControls>
+        <ScrollableScene />
       </Canvas>
 
       <TrailerModal className="absolute bottom-10 left-[5%] z-10" />

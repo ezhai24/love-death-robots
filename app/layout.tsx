@@ -3,6 +3,12 @@ import Image from "next/image";
 import { externalRoutes } from "./routes";
 import "./globals.css";
 
+export const metadata = {
+  title: "Emily Zhai | LOVE DEATH + ROBOTS",
+  description:
+    "A teaser website for the season 3 release of the critically acclaimed, animated anthology - Love, Death, & Robots.",
+};
+
 export default function RootLayout({
   children,
 }: {

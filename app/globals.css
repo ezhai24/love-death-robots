@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Bebas-Regular";
+  src: url("/fonts/Bebas-Regular.ttf");
+}
+
 @layer base {
   :root {
     --color-botred: #fc4106;

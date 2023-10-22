@@ -1,3 +1,5 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./app/**/*.{ts,tsx}"],
@@ -8,7 +10,7 @@ module.exports = {
         botred: "var(--color-bot-red)",
       },
       fontFamily: {
-        sans: ["Bebas-Regular"],
+        sans: ["Bebas-Regular", ...defaultTheme.fontFamily.sans],
       },
     },
   },

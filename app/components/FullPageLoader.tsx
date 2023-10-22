@@ -51,7 +51,7 @@ const FullPageLoader = () => {
       </div>
 
       {/* Progress bar */}
-      <div className="text-botgray/50 absolute bottom-20 text-center text-xl">
+      <div className="text-botgray/50 absolute bottom-36 text-center text-xl">
         Loading: {Math.trunc(progress)}%
       </div>
     </motion.div>

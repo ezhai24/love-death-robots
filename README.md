@@ -10,6 +10,12 @@ Teaser website for the critically aclaimed, animated anthology - Love, Death, & 
 - [Typescript](https://www.typescriptlang.org/)
 - [Next.js](https://nextjs.org/)
 
+**Attributions 🫡**
+- Design inspired by [Tatyana Kuzub](https://dribbble.com/shots/20188292-Wednesday-Addams)
+- XBOT 4000 3D model designed by [danmars](https://sketchfab.com/3d-models/xbot-4000-68984079c93048d88d062add5526ba29)
+- Abandoned lot HDRI from [Poly Haven](https://polyhaven.com/a/teufelsberg_ground_1)
+- Viewport calcultations by [looeee](https://discourse.threejs.org/t/functions-to-calculate-the-visible-width-height-at-a-given-z-depth-from-a-perspective-camera/269)
+
 ## Local Development
 ### `now env pull`
 Pulls local development environment variables from Vercel.

@@ -65,19 +65,14 @@ const WatchNowSection = () => {
       >
         Netflix
       </Text>
-      <Html
-        transform
-        zIndexRange={[9, 0]}
-        scale={0.15}
-        position={[0.29, -0.65, 0]}
-      >
+      <Html zIndexRange={[9, 0]} position={[0, -0.55, 0]}>
         <motion.a
           href={externalRoutes.netflixLDRTitle}
           whileHover={{
             backgroundColor: "var(--color-botred)",
             color: "#fff",
           }}
-          className="border-botgray text-botgray rounded-full border-2 border-solid bg-transparent px-10 py-3"
+          className="absolute whitespace-nowrap rounded-full border-2 border-solid border-botgray bg-transparent px-10 py-3 text-botgray"
         >
           Watch now
         </motion.a>

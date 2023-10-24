@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useAnimate } from "framer-motion";
 
 import { useProgress } from "@react-three/drei";
@@ -7,6 +7,13 @@ const FullPageLoader = () => {
   const { progress } = useProgress();
 
   const [scope, animate] = useAnimate();
+  const [progressIndicator, setProgress] = useState(0);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setProgress((prev) => (progressIndicator < progress ? prev + 1 : prev));
+    }, 10);
+  });
 
   useEffect(() => {
     const animateLoader = async () => {
@@ -51,8 +58,8 @@ const FullPageLoader = () => {
       </div>
 
       {/* Progress bar */}
-      <div className="text-botgray/50 absolute bottom-36 text-center text-xl">
-        Loading: {Math.trunc(progress)}%
+      <div className="absolute bottom-36 text-center text-xl text-botgray/50">
+        Loading: {progressIndicator}%
       </div>
     </motion.div>
   );

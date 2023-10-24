@@ -3,7 +3,7 @@ import * as THREE from "three";
 import { useRef } from "react";
 
 import { Center, Text, useScroll } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 
 import { getViewportHeightAtDepth } from "@/app/utils";
 
@@ -12,13 +12,14 @@ import { SCENE_MARGIN_X_TO_VIEWPORT_RATIO } from "./ScrollableScene";
 
 const DescriptionSection = () => {
   const scroll = useScroll();
+  const { viewport } = useThree();
+
   const descSectionRef = useRef<THREE.Group | null>(null);
 
   const sectionZ = 2;
 
   const viewportHeight = getViewportHeightAtDepth(sectionZ, CAMERA_SETTINGS);
-  const viewportWidth =
-    viewportHeight * (window.innerWidth / window.innerHeight);
+  const viewportWidth = viewportHeight * (viewport.width / viewport.height);
   const marginX = viewportWidth * (SCENE_MARGIN_X_TO_VIEWPORT_RATIO + 0.1);
 
   const sectionX = 0 + viewportWidth / 2 - marginX;
@@ -34,7 +35,7 @@ const DescriptionSection = () => {
   return (
     <Center
       ref={descSectionRef}
-      position={[sectionX, 0, sectionZ]}
+      position={[sectionX, sectionY, sectionZ]}
       precise={false}
       left
       onCentered={() => {}}

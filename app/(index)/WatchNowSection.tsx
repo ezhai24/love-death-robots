@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useRef } from "react";
 
 import { Text, useScroll, Html } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 
 import { externalRoutes } from "@/app/routes";
 import { getViewportHeightAtDepth } from "@/app/utils";
@@ -14,13 +14,14 @@ import { SCENE_MARGIN_X_TO_VIEWPORT_RATIO } from "./ScrollableScene";
 
 const WatchNowSection = () => {
   const scroll = useScroll();
+  const { viewport } = useThree();
+
   const watchSectionRef = useRef<THREE.Group | null>(null);
 
   const sectionZ = 2;
 
   const viewportHeight = getViewportHeightAtDepth(sectionZ, CAMERA_SETTINGS);
-  const viewportWidth =
-    viewportHeight * (window.innerWidth / window.innerHeight);
+  const viewportWidth = viewportHeight * (viewport.width / viewport.height);
   const marginX = viewportWidth * (SCENE_MARGIN_X_TO_VIEWPORT_RATIO + 0.1);
 
   const sectionX = 0 - viewportWidth / 2 + marginX;

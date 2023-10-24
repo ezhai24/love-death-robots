@@ -18,8 +18,7 @@ const ScrollProgress = () => {
   const positionZ = 3;
 
   const viewportHeight = getViewportHeightAtDepth(positionZ, CAMERA_SETTINGS);
-  const viewportWidth =
-    viewportHeight * (window.innerWidth / window.innerHeight);
+  const viewportWidth = viewportHeight * (viewport.width / viewport.height);
   const marginX = viewportWidth * SCENE_MARGIN_X_TO_VIEWPORT_RATIO;
   const positionX = 0 + viewportWidth / 2 - marginX;
 
